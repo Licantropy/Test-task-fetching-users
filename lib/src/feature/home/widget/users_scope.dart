@@ -99,19 +99,17 @@ class _UsersScopeState extends State<UsersScope>
 
     // Listen to UsersBloc state changes.
     _usersBloc.stream.listen((state) {
-      state.maybeMap(
+      state.mapOrNull(
         error: (errorState) => ErrorScope.of(context)
             .showErrorSnackBar(errorState.message ?? 'Unknown error'),
-        orElse: () {},
       );
     });
 
     // Listen to UserDetailsBloc state changes.
     _userDetailsBloc.stream.listen((state) {
-      state.maybeMap(
+      state.mapOrNull(
         error: (errorState) => ErrorScope.of(context)
             .showErrorSnackBar(errorState.message ?? 'Unknown error'),
-        orElse: () {},
       );
     });
   }
